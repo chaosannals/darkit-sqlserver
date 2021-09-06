@@ -45,9 +45,16 @@ namespace Darkit.SQLServer.Query
         }
     }
 
-    public class SQLServerQuery<T> : SQLServerQuery
+    public class SQLServerQuery<T>
     {
-        public SQLServerQuery(SQLServerSession session): base(session, TableAttribute.GetTableName<T>()) { }
+        public string Table { get; private set; }
+        public SQLServerSession Session { get; private set; }
+
+        public SQLServerQuery(SQLServerSession session)
+        {
+            Table = TableAttribute.GetTableName<T>();
+            Session = session;
+        }
 
         public SQLServerQuery<T, J> Join<J>(Func<T, J, bool> nexus)
         {

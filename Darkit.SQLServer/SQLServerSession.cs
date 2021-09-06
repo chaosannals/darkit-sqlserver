@@ -60,7 +60,7 @@ namespace Darkit.SQLServer
             return new SQLServerQuery(this, table);
         }
 
-        public SQLServerQuery From<T>()
+        public SQLServerQuery<T> From<T>()
         {
             return new SQLServerQuery<T>(this);
         }

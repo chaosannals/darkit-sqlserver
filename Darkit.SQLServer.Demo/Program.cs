@@ -5,11 +5,6 @@ using System.Text;
 
 namespace Darkit.SQLServer.Demo
 {
-    class Tester
-    {
-
-    }
-
     class Program
     {
         static void Main(string[] args)
@@ -20,8 +15,8 @@ namespace Darkit.SQLServer.Demo
                 session.The("tester")
                     .Column<string>("")
                     .Create();
-                session.From("tester")
-                    .Select<Tester>();
+                session.From<Tester>()
+                    .Select();
             }
             Console.WriteLine("结束");
             Console.ReadKey();
