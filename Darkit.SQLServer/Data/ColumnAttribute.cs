@@ -22,5 +22,11 @@ namespace Darkit.SQLServer.Data
             Scale = 0;
             IsNotNull = false;
         }
+
+        public static ColumnAttribute GetColumnAttribute(Type type)
+        {
+            object[] cas = type.GetCustomAttributes(typeof(ColumnAttribute), false);
+            return cas.Length > 0 ? (cas[0] as ColumnAttribute) : null;
+        }
     }
 }

@@ -12,11 +12,11 @@ namespace Darkit.SQLServer.Data
         public bool IsUnique { get; set; }
         public string[] Columns { get; set; }
 
-        public IndexAttribute(string name, params string[] columns)
+        public IndexAttribute(params string[] columns)
         {
-            Name = name;
             IsUnique = false;
             Columns = columns;
+            Name = string.Join("_", columns.Select(c => c.ToUpper()).ToArray()) + "_INDEX";
         }
     }
 }

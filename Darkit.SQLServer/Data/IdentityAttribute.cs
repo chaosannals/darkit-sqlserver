@@ -13,5 +13,11 @@ namespace Darkit.SQLServer.Data
             Initial = 1;
             Step = 1;
         }
+
+        public static IdentityAttribute GetIdentityAttribute(Type type)
+        {
+            object[] ias = type.GetCustomAttributes(typeof(IdentityAttribute), false);
+            return ias.Length > 0 ? (ias[0] as IdentityAttribute) : null;
+        }
     }
 }

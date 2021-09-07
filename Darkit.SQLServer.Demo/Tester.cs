@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Darkit.SQLServer.Demo
 {
-    class Tester
+    public class Tester
     {
     }
 }

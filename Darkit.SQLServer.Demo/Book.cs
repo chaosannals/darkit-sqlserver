@@ -8,7 +8,8 @@ namespace Darkit.SQLServer.Demo
 {
     [Table(Name = "d_book")]
     [PrimaryKey("id")]
-    [Index("NAME_UNIQUE", "Name", "Anthor", IsUnique = true)]
+    [Index("name", "anthor", IsUnique = true)]
+    [Index("up_at")]
     public class Book
     {
         [Identity]

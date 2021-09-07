@@ -10,11 +10,15 @@ namespace Darkit.SQLServer.Data
     {
         public string Name { get; set; }
 
-        public static string GetTableName<T>()
+        public static string GetTableName(Type type)
         {
-            Type type = typeof(T);
             object[] tas = type.GetCustomAttributes(typeof(TableAttribute), false);
             return tas.Length > 0 ? (tas[0] as TableAttribute).Name : type.Name;
+        }
+
+        public static string GetTableName<T>()
+        {
+            return GetTableName(typeof(T));
         }
     }
 }
