@@ -38,12 +38,13 @@ namespace Darkit.SQLServer.Design
             string table = TableAttribute.GetTableName(type);
             string[] keys = PrimaryKeyAttribute.GetPrimaryKeys(type);
 
-            List<string> columns = new List<string>();
+            List<string> definition = new List<string>();
             // 
             foreach(PropertyInfo pi in type.GetProperties())
             {
                 ColumnAttribute ca = ColumnAttribute.GetColumnAttribute(pi.PropertyType);
                 string name = ca == null ? pi.Name : ca.Name;
+
 
                 IdentityAttribute ia = IdentityAttribute.GetIdentityAttribute(pi.PropertyType);
                 if (ia != null)
@@ -51,7 +52,7 @@ namespace Darkit.SQLServer.Design
 
                 }
             }
-            $"CREATE TABLE {table} "
+            string sql = $"CREATE TABLE [{table}] ({string.Join(",", definition.ToArray())})";
         }
     }
 }
